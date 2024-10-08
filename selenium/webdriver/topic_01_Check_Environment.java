@@ -59,13 +59,16 @@ public class topic_01_Check_Environment {
 
     @Test
     public void TC_02_Create_Team_Member() {
-        WebElement avatarButton = driver.findElement(By.xpath("//button[@class='fad fa-user-circle']"));
+        // Nhấn vào avatar để mở dropdown menu
+        WebElement avatarButton = driver.findElement(By.xpath("//i[@class='fad fa-user-circle']"));
         avatarButton.click();
 
 
-
-
+        // Tìm và nhấn vào nút 'Teams' bên trong dropdown menu
+        WebElement teamButton = driver.findElement(By.xpath("//a[@href='/business/members']"));
+        teamButton.click();
     }
+
 
 
 
