@@ -55,20 +55,33 @@ public class topic_01_Check_Environment {
 
         // Kiểm tra rằng URL của trang Home đúng
         Assert.assertEquals(driver.getCurrentUrl(), "https://axiamai.com/authenticator/dashboard", "Không chuyển đến trang Home");
+    }
 
-        /*
-        // Chờ và chuyển đến popup
-        Alert alert = driver.switchTo().alert();
+    @Test
+    public void TC_02_Create_Team_Member() {
+        WebElement avatarButton = driver.findElement(By.xpath("//button[@class='nav-item navbar-dropdown dropdown-user dropdown']"));
+        avatarButton.click();
 
-        // Xác minh nội dung của popup
-        String alertText = alert.getText();
-        if (alertText.equals("Signed in successfully")) {
-            System.out.println("Popup hiển thị đúng nội dung.");
-        } else {
-            System.out.println("Popup không hiển thị đúng nội dung.");
-        }
+        // Đợi menu xổ xuống và chọn một mục từ menu (ví dụ: Teams)
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement teamsOption = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href='/business/members']")));
+        teamsOption.click();
 
-         */
+
+        driver.findElement(By.xpath("//button[@class='add-folder btn btn-primary me-1']")).click();
+
+        WebElement userFullNameField = driver.findElement(By.xpath("//input[@id='member_full_name']"));
+
+        userFullNameField.sendKeys("tuan");
+
+        WebElement userEmailField = driver.findElement(By.xpath("//input[@id='email']"));
+
+        userEmailField.sendKeys("tuanta9a303@gmail.com");
+
+        WebElement createButton = driver.findElement(By.xpath("//button[@class='btn btn-secondary']"));
+
+        createButton.click();
+
 
     }
 
